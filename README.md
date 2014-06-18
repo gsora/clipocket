@@ -1,6 +1,4 @@
-# `clipocket`
-
-## A nice CLI Pocket client!
+# `clipocket`: a nice CLI Pocket client!
 
 #### Dependencies
 
