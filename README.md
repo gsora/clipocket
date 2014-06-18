@@ -1,61 +1,29 @@
-# README about `clipocket` development
+# `clipocket`
 
-#### What we know
+## A nice CLI Pocket client!
 
- - we have a Pocket library
- - we want to use it in a production environment
- - this will be a *read-only* client by now, but options will come soon
- - we have to use things like Readability in order to retrieve an already-formatted easy-to-use HTML file
- - we MUST implement a CLI-into-CLI work flow (i.e. there will be a set of clipocket commands)
- 
-#### Usage flow
+#### Dependencies
 
-  
-	1) extended title
-	2) extended title
-	...
-	42) extended title
-	clipocket> read 42
+ - `python3`
+ - `python-requests`
+ - `pyPocket` (already included)
+ - `python-beautifulsoup4`
+
+#### Usage
+
+The first thing you have to do is login to Pocket, and `clipocket` will guide you through the process: simlply execute it:
 	
-	**At this point, the Readability HTML will be parsed, formatted and displayed into man**
-	**When the user exit from the page, a menu will ask what to do with the link**
-	
-	(A)rchive, (D)elete, (S)tar:
-	
-	**Now print the links list again**
+	$ python3 ./clipocket.py
 
-The formatted pages will be saved as /tmp files, ready to be dumped on the next reboot.
+After that, you're ready to rock!
 
-## man pages on steroids
-Why reinvent the wheel?
-We have man pages!
+	$ python3 ./clipocket.py --add URL	# add an url to your account
+	$ python3 ./clipocket.py --reader	# read!
 
-#### The style we'll use
+#### Is it complete/stable?
 
-	.TH "Pocket link" 12/34/5678
-	
-	.SH "Article title goes here"
-	
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultricies cursus erat, eu fringilla elit malesuada elementum. Donec rhoncus quis dui eget volutpat. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet fringilla interdum. Sed tortor diam, dapibus vitae nisi ut, congue fringilla est. Interdum et malesuada fames ac ante ipsum primis in faucibus. In ac purus sed eros molestie porta vitae eu lectus. Pellentesque aliquam egestas diam a euismod. Aliquam ac enim quam. Nunc nec tortor erat. Vivamus pretium suscipit nunc.
+No it isn't.
 
-	Quisque ultrices pharetra ipsum. Mauris hendrerit risus at dui luctus, sit amet commodo augue gravida. Morbi molestie mattis leo, ac aliquet nulla ullamcorper id. Phasellus consectetur ante turpis, eget ultricies est auctor at. Quisque sed ante a metus faucibus accumsan. Quisque non erat et tellus ullamcorper mollis sit amet quis ipsum. Sed fermentum felis enim, eu venenatis sem gravida nec. Vestibulum non ipsum nulla. Etiam sed elementum risus. Suspendisse potenti. Praesent id semper justo.
+By now you can add and read entries but pyPocket doesn't support delete/star/mark as read operation on items: I'm working on it, will take a few days though.
 
-	Sed lobortis elit et eros pharetra luctus. In mollis massa a enim pharetra tempor. Fusce porta turpis a enim volutpat dictum quis vitae neque. Morbi pulvinar, enim vel dapibus auctor, diam urna venenatis libero, nec vulputate nulla nulla fringilla lorem. Cras pulvinar dapibus enim, a egestas dui cursus nec. Fusce feugiat porttitor tortor a porttitor. Cras lobortis pharetra lorem pharetra porttitor. 
-	
-	.SH "Original Link"
-	
-	http://it.lipsum.com/feed/html
-
-
-Refer to `man groff` to know more about the bold and italic thing
-
-#### File generation and display method
-As far as I can understand, **groff >>>>> troff** (thanks, RMS).
-This said, the correct procedure to create and display a custom man page without any escape character hassle is:
-
-	# edit your file with the style said before (calling this yourFile now)
-	groff -Tascii -man yourFile > yourFile.1
-	gzip yourFile.1
-	man ./yourFile.gz
-	
-*BOOM*, man file bitches.
+Sometimes the service I use to get a more easy-to-parse HTML (Readability) could go nuts, if you recive some kind of error related to 5xx category simply retry.
