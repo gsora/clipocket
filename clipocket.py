@@ -48,7 +48,7 @@ if(not os.path.isfile("myLoginData")):
     # then get the access token and save into a file
 
     aTok = pyPocket.accessToken(consumerKey, rTok)
-    file = open("myLoginData", "r+")
+    file = open("myLoginData", "a")
     file.write(aTok)
     file.close()
 
