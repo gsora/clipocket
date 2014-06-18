@@ -52,7 +52,7 @@ if(not os.path.isfile("myLoginData")):
     file.write(aTok)
     file.close()
 
-file = open("myLoginData", "r+")
+file = open("myLoginData", "r")
 aTok = file.readline()
 
 if args.reader:
