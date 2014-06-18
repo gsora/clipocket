@@ -35,7 +35,7 @@ parser.add_argument("--add", help="add a link to the authorized account")
 args = parser.parse_args()
 
 consumerKey = "23692-39e93da62c7cbec9e5e4c468"
-redirectUri = "localhost"
+redirectUri = "http://gsora.me"
 
 if(not os.path.isfile("myLoginData")):
     # get the request token and authorize it
