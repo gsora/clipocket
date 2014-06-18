@@ -5,7 +5,7 @@
  - we have a Pocket library
  - we want to use it in a production environment
  - this will be a *read-only* client by now, but options will come soon
- - we have to use things like Instapaper in order to retrieve an already-formatted easy-to-use HTML file
+ - we have to use things like Readability in order to retrieve an already-formatted easy-to-use HTML file
  - we MUST implement a CLI-into-CLI work flow (i.e. there will be a set of clipocket commands)
  
 #### Usage flow
@@ -17,7 +17,7 @@
 	42) extended title
 	clipocket> read 42
 	
-	**At this point, the Instapaper HTML will be parsed, formatted and displayed into man**
+	**At this point, the Readability HTML will be parsed, formatted and displayed into man**
 	**When the user exit from the page, a menu will ask what to do with the link**
 	
 	(A)rchive, (D)elete, (S)tar:
