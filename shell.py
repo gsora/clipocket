@@ -50,7 +50,5 @@ def cpRead(index, pocketDict):
     else:
         title = pocketDict[int(index)]["resolved_title"]
         url = pocketDict[int(index)]["resolved_url"]
-        print(title)
-        print(url)
         parser.createManPage(title, url)
 
