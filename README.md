@@ -6,6 +6,11 @@
  - `python-requests`
  - `pyPocket` (already included)
  - `python-beautifulsoup4`
+ - `html2text`
+
+#### Changelog:
+ - 0.1: basic functionality
+ - 0.2: now displaying entry content with less and markdown
 
 #### Usage
 
