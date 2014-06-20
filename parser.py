@@ -26,7 +26,6 @@ import bs4
 import urllib.request
 import json
 import os
-import html2text
 
 def parseURL(URL):
     parseKey = "99b97b1daefd55cf9805618152d665ae58fda6b4"
@@ -45,7 +44,7 @@ def createManPage(title, url):
     manPage = open("/tmp/clipocket", "a+")
     manPage.write("Entry title: {}\n".format(title))
     manPage.write("URL: {}\n\n".format(url))
-    manPage.writelines(html2text.html2text(parseURL(url).prettify()))
+    manPage.writelines(parseURL(url).prettify())
     manPage.close()
-    os.system("less /tmp/clipocket")
+    os.system("w3m -I UTF8 -T text/html -dump /tmp/clipocket | less")
     os.remove("/tmp/clipocket")
