@@ -67,7 +67,7 @@ if args.reader:
 
     # a dict containing your actual links data (eg: URL, name, word count etc)
     pocketEntries = {}
-    for i in pocketJson["list"]:
+    for i in sorted(pocketJson["list"]):
         pocketEntries[entryCounter] = pocketJson["list"][i]
         entryCounter+=1
 
