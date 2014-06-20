@@ -27,6 +27,15 @@ import json
 import time
 import argparse
 import shell
+import subprocess
+
+null = open(os.devnull, "w")
+
+try:
+    subprocess.call("w3m", stderr=null, stdout=null)
+except OSError:
+    print("w3m is required to use clipocket.")
+    exit(1)
 
 # initialize the argparse
 parser = argparse.ArgumentParser()
