@@ -23,12 +23,26 @@
 
 import parser
 import os
+import datetime
 
 def cpShell(pocketDict, entries):
     for i in range(0, entries):
-        print("{}) {}".format(i,pocketDict[i]["resolved_title"]))
     
-    prompt = input("\nclipocket> ")
+        favFlag = "no"
+        typeFlag = "article"
+        addDate = datetime.datetime.fromtimestamp(int(pocketDict[i]["time_added"])).strftime('%a, %d %b %Y %H:%M:%S')
+
+        if pocketDict[i]["favorite"] == '1':
+            favFlag = "yes"
+
+        if pocketDict[i]["has_video"] == "2":
+            typeFlag == "video"
+        elif pocketDict[i]["has_image"] == "2":
+            typeFlag == "image"
+
+        print("{}) {}\n\tFavorite: {}\n\tType: {}\n\tAdded: {}\n".format(i, pocketDict[i]["resolved_title"], favFlag, typeFlag, addDate))
+    
+    prompt = input("clipocket> ")
     prompt = prompt.split(" ")
     if len(prompt) > 2 or len(prompt) < 2 and prompt[0] is not "clear":
         if prompt[0] == "exit":
