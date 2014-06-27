@@ -12,6 +12,7 @@
  - 0.1: basic functionality
  - 0.2: now displaying entry content with less and markdown
  - 0.3: now displaying content parsed by w3m, which is now a necessary dependency
+
 #### Usage
 
 The first thing you have to do is login to Pocket, and `clipocket` will guide you through the process: simlply execute it:
