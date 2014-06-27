@@ -71,18 +71,25 @@ if args.reader:
     # load the json
     pocketJson = json.loads(gData)
 
-    # counts how many links you saved
-    entryCounter = 0
-
-    # a dict containing your actual links data (eg: URL, name, word count etc)
-    pocketEntries = {}
-    for i in sorted(pocketJson["list"]):
-        pocketEntries[entryCounter] = pocketJson["list"][i]
-        entryCounter+=1
 
     # a pretty CLI-like interface!
     while(1):
-        shell.cpShell(pocketEntries, entryCounter, consumerKey, aTok)
+            # now let's parse some data
+            gData = pyPocket.getData(consumerKey, aTok)
+            
+            # load the json
+            pocketJson = json.loads(gData)
+        
+            # counts how many links you saved
+            entryCounter = 0
+
+            # a dict containing your actual links data (eg: URL, name, word count etc)
+            pocketEntries = {}
+            for i in sorted(pocketJson["list"]):
+                pocketEntries[entryCounter] = pocketJson["list"][i]
+                entryCounter+=1
+        
+            shell.cpShell(pocketEntries, entryCounter, consumerKey, aTok)
 
 if args.add:
     print("Working...")
