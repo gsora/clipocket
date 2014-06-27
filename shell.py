@@ -60,14 +60,23 @@ def cpShell(pocketDict, entries, consumerKey, aTok):
 
     if command == "help":
         cpHelp()
+        return
+
     elif command == "read":
-        cpRead(argument, pocketDict)
+        cpRead(argument, pocketDict, consumerKey, aTok)
+        return
+
     elif command == "done":
         cpDone(argument, pocketDict, consumerKey, aTok)
+        return
+
     elif command == "rm":
         cpRm()
+        return 
+
     elif command == "star":
         cpStar()
+        return
 
 def cpHelp():
     print("\nCLIPocket command reference:\n\tread: read a post\n\tdone: mark as read\n\trm: delete an entry\n\tstar: star an entry\n\tclear: clear the screen\n\texit: quit clipocket\n")
@@ -78,8 +87,8 @@ def cpDone(index, pocketDict, consumerKey, aTok):
         return "error"
     else:
         entryID = pocketDict[int(index)]["resolved_id"]
-        print(pyPocket.archive(entryID, consumerKey, aTok))
-
+        pyPocket.archive(entryID, consumerKey, aTok)
+        return "ok"
 
 def cpRm():
     print("Not implemented yet :(")
@@ -87,12 +96,17 @@ def cpRm():
 def cpStar():
     print("Not implemented yet :(")
 
-def cpRead(index, pocketDict):
+def cpRead(index, pocketDict, consumerKey, aTok):
     if index == 0:
         print("Syntax:\n\tread [entry-number]")
         return "error"
     else:
         title = pocketDict[int(index)]["resolved_title"]
         url = pocketDict[int(index)]["resolved_url"]
+        entryID = pocketDict[int(index)]["resolved_id"]
         parser.createManPage(title, url)
+        choice = input("Would you want to archive this item? (a/n): ")
+        if choice == "a":
+            cpDone(index, pocketDict, consumerKey, aTok)
+           
 
