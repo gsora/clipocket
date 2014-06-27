@@ -24,8 +24,9 @@
 import parser
 import os
 import datetime
+import pyPocket
 
-def cpShell(pocketDict, entries):
+def cpShell(pocketDict, entries, consumerKey, aTok):
     for i in range(0, entries):
     
         favFlag = "no"
@@ -62,7 +63,7 @@ def cpShell(pocketDict, entries):
     elif command == "read":
         cpRead(argument, pocketDict)
     elif command == "done":
-        cpDone()
+        cpDone(argument, pocketDict, consumerKey, aTok)
     elif command == "rm":
         cpRm()
     elif command == "star":
@@ -71,8 +72,14 @@ def cpShell(pocketDict, entries):
 def cpHelp():
     print("\nCLIPocket command reference:\n\tread: read a post\n\tdone: mark as read\n\trm: delete an entry\n\tstar: star an entry\n\tclear: clear the screen\n\texit: quit clipocket\n")
 
-def cpDone():
-    print("Not implemented yet :(")
+def cpDone(index, pocketDict, consumerKey, aTok):
+    if index == 0:
+        print("Syntax:\n\tdone [entry-number]")
+        return "error"
+    else:
+        entryID = pocketDict[int(index)]["resolved_id"]
+        print(pyPocket.archive(entryID, consumerKey, aTok))
+
 
 def cpRm():
     print("Not implemented yet :(")

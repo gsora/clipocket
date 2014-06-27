@@ -82,7 +82,7 @@ if args.reader:
 
     # a pretty CLI-like interface!
     while(1):
-        shell.cpShell(pocketEntries, entryCounter)
+        shell.cpShell(pocketEntries, entryCounter, consumerKey, aTok)
 
 if args.add:
     print("Working...")

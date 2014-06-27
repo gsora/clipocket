@@ -114,3 +114,10 @@ def addData(consumerKey, accessToken, URL):
         raise PocketCommError("Pocket returned Bad Request error, outdated login data?")
     else:
             return(addData.text)
+
+def archive(entryID, consumerKey, accessToken):
+   methodURL = "https://getpocket.com/v3/send"
+   parameters = {'consumer_key': consumerKey, 'access_token': accessToken, 'actions': [{'action': 'archive', 'item_id': entryID}]}
+   headers = {'content-type': 'application/json; charset=UTF-8'}
+   archive = requests.post(methodURL, data=json.dumps(parameters), headers=headers)
+   return archive.text
